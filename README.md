@@ -14,7 +14,7 @@
 4. Créez une base de données dans [http://localhost/phpmyadmin/](http://localhost/phpmyadmin/) intitulée *base1*.
 5. Importez-y le fichier *blog1(1).sql*.
 6. Ouvrez le répertoire du projet dans votre éditeur de code, puis configurez vos paramètres de base de données dans le fichier *config/configBdd.php*.
-7. Pour alimenter la base de données, connectez-vous à l'url [localhost/admin](localhost/blog1/admin) avec l'email **toto@toto.fr** et le mot de passe **toto**.
+7. Pour alimenter la base de données, connectez-vous à l'url [http://localhost/admin](http://localhost/blog1/admin) avec l'email **toto@toto.fr** et le mot de passe **toto**.
 8. Commencez par créer des catégories, puis des articles avec ou sans image (format jpg ou png taille inférieure à 500ko).
 9. Quelques images sont disponibles dans *site/img*, mais vous pouvez utiliser celles que vous voulez.
 10. Une fois que vous avez quelques articles, testez leur affichage à [http://localhost/blog1/site/articles.php](http://localhost/blog1/site/articles.php)
