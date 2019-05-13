@@ -21,17 +21,19 @@ require_once PROJECT_PATH . '/site/functions/functions.php';
 </header>
 <hr>
 <h1>Articles</h1>
-<?php
-//recherche
-if(isset($_POST["searchArticle"])){
-    $articles = searchArticle($_POST["searchArticle"]);
-}else{
-    $articles = getArticles();
-}
-//affichage des articles
-foreach ($articles as $article){
-    include 'template/_article_preview.php';
-}
-?>
+<section>
+    <?php
+    //recherche
+    if(isset($_POST["searchArticle"])){
+        $articles = searchArticle($_POST["searchArticle"]);
+    }else{
+        $articles = getArticles();
+    }
+    //affichage des articles
+    foreach ($articles as $article){
+        include 'template/_article_preview.php';
+    }
+    ?>
+</section>
 </body>
 </html>

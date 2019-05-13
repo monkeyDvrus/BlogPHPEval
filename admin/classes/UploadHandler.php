@@ -21,8 +21,6 @@ class UploadHandler
     public function __construct(UploadedFile $file)
     {
         $this->file = $file;
-        $this->targetFileName = $this->setUploadedFileName();
-        $this->targetFilePath = self::UPLOAD_DIR . basename($this->targetFileName);
     }
 
     /**
@@ -36,7 +34,7 @@ class UploadHandler
      * @return bool
      */
     public function ckeckExtension() : bool {
-        $imageFileType = strtolower(pathinfo($this->targetFilePath,PATHINFO_EXTENSION));
+        $imageFileType = strtolower(pathinfo($this->file->getName(),PATHINFO_EXTENSION));
         return in_array($imageFileType, self::ALLOWED_EXTENSIONS);
     }
 
@@ -48,6 +46,8 @@ class UploadHandler
     }
 
     public function upload(){
+        $this->targetFileName = $this->setUploadedFileName();
+        $this->targetFilePath = self::UPLOAD_DIR . basename($this->targetFileName);
         move_uploaded_file($this->file->getTmpName(), $this->targetFilePath);
     }
 

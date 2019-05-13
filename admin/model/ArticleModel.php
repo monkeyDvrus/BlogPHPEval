@@ -53,8 +53,9 @@ class ArticleModel
     }
 
     private function uploadImage(){
+        $urlNewImgArticle = null;
         //upload de l'image le cas échéant
-        if($_FILES["imgFile"]["name"] != "" AND getimagesize($_FILES["imgFile"]["tmp_name"])){
+        if( $_FILES["imgFile"]["name"] != "" /*AND getimagesize($_FILES["imgFile"]["tmp_name"])*/){
             $uploadedFile = new UploadedFile($_FILES["imgFile"]);
             $uploadHandler = new UploadHandler($uploadedFile);
             if ($uploadHandler->check()) {
