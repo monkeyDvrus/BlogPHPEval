@@ -15,5 +15,6 @@
     <h1><?= $article->titre_article ?></h1>
     <p>Date de dernière modification : <?= date('d/m/Y',strtotime($article->date_article)) ?></p>
     <p><?= $article->contenu_article ?></p>
+    <img src="../uploads/<?= $article->urlImgArticle ?>" alt="">
 </body>
 </html>

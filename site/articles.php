@@ -26,12 +26,38 @@ require_once PROJECT_PATH . '/site/functions/functions.php';
     //recherche
     if(isset($_POST["searchArticle"])){
         $articles = searchArticle($_POST["searchArticle"]);
+    }else if(isset($_POST["filter"]) && $_POST["filter"] != 0){
+        $articles = getArticlesByCat($_POST["filter"]);
     }else{
         $articles = getArticles();
     }
+    ?>
+    <form action="#" method="post">
+        <label for="filter">Filtrer par catégories:</label>
+        <select name="filter" id="filter">
+            <option value="0">Toutes les catégories</option>
+            <?php 
+                function ifSelected($idCat){
+                    if($_POST["filter"] == $idCat){ echo 'selected';}
+                }
+                $categories = getCategories();
+                foreach ($categories as $categorie) :
+            ?>
+            <option <?= ifSelected($categorie->id_categorie) ?> value="<?= $categorie->id_categorie ?>"><?= $categorie->nom_categorie ?></option>
+            <?php
+                endforeach;
+            ?>
+        </select>
+        <input type="submit" value="Filtrer">
+    </form>
+    <?php
     //affichage des articles
-    foreach ($articles as $article){
-        include 'template/_article_preview.php';
+    if (count($articles) == 0) {
+        echo '<p>Aucun article trouvé</p>';
+    }else{
+        foreach ($articles as $article){
+            include 'template/_article_preview.php';
+        }
     }
     ?>
 </section>

@@ -33,3 +33,25 @@ function searchArticle($str){
     $articles = $req->fetchAll(PDO::FETCH_OBJ);
     return $articles;
 }
+
+/**
+ * @return array
+ */
+function getCategories(){
+    $pdo = Bdd::getPdo();
+    $req = $pdo->query("SELECT * FROM categorie");
+    $categories = $req->fetchAll(PDO::FETCH_OBJ);
+    return $categories;
+}
+
+/**
+ * @param $id
+ */
+function getArticlesByCat($id){
+    $pdo = Bdd::getPdo();
+    $idCat = $id;
+    $req = $pdo->prepare("SELECT * FROM article JOIN categorie c ON article.id_categorie = c.id_categorie WHERE article.id_categorie = ? ORDER BY date_article DESC ;");
+    $req->execute([$idCat]);
+    $categories = $req->fetchAll(PDO::FETCH_OBJ);
+    return $categories;
+}
